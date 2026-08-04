@@ -92,13 +92,60 @@ fn main(){
 }
 
 
----> generics order 
-1. Traits          → contract kya hota hai, kaise likhte hain
-2. Trait impl      → kisi struct pe implement karna
-3. Default impl    → optional override
-4. Generic         → <T> kya hai
-5. Trait bounds    → <T: SomeTrait> → dono saath mein -> 
-6. impl Trait      → shorthand
-7. dyn Trait       → runtime polymorphism
+---> traits & generics 
+
+1. Traits
+         → a contract that defines what a type CAN DO
+         → only function signatures, no body
+         → syntax:  trait Name { fn method(&self) -> ReturnType; }
+         → Java's interface === Rust's trait
+
+2. Trait impl
+         → fulfilling the trait contract for a specific struct/enum
+         → every function declared in the trait MUST be implemented
+         → syntax:  impl TraitName for StructName { fn method(&self) -> ReturnType { ... } }
+
+3. Default impl
+         → write a default body for a function inside the trait itself
+         → overriding it is OPTIONAL
+         → types that don't override it automatically get the default
+         → syntax:  trait Name { fn method(&self) -> String { String::from("default") } }
+
+4. Generic
+         → a placeholder type <T> that the caller decides
+         → write one piece of code that works with any type
+         → T, U, K, V — just conventions, you can use any name
+         → syntax:  fn foo<T>(a: T) -> T { ... }
+         → Option<T>, Result<T, E> — these are all generic
+
+5. Trait bounds
+         → restrict the generic T — only types that can do something
+         → T: SomeTrait means T must implement SomeTrait
+         → multiple bounds:  T: Trait1 + Trait2
+         → where clause (clean syntax):  where T: Trait1 + Trait2
+         → syntax:  fn foo<T: Add<Output=T>>(a: T, b: T) -> T { a + b }
+
+6. impl Trait
+         → shorthand syntax for trait bounds — no need to write full generic
+         → in parameters:  fn foo(a: &impl SomeTrait) { ... }
+         → in return type:  fn foo() -> impl SomeTrait { ... }  (hides the exact type)
+         → limitation: does not guarantee two parameters are the same type
+
+7. dyn Trait
+         → the actual type is decided at RUNTIME, not compile time
+         → must wrap in Box<dyn Trait> because size is unknown at compile time
+         → allows storing different types together in a Vec
+         → impl Trait = compile time | dyn Trait = runtime
+         → syntax:  fn foo() -> Box<dyn SomeTrait> { Box::new(Dog) }
+
 8. Associated Types
+         → a type defined inside a trait, set by whoever implements it
+         → type Output; — name is declared in trait, actual type set in impl
+         → Iterator's Item, Add's Output — these are all associated types
+         → syntax:  trait Foo { type Output; fn bar(&self) -> Self::Output; }
+
 9. Blanket impl
+         → a single generic impl that applies to ALL qualifying types at once
+         → if a type implements one trait, it automatically gets another
+         → std library: impl<T: Display> ToString for T — that's why 42.to_string() works
+         → syntax:  impl<T: Display> PrintMe for T { ... }

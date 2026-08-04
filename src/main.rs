@@ -1,5 +1,20 @@
-mod traits_generics;
+trait Greet {
+    fn say_hello(&self){
+        println!("hello");
+    }
+}
 
-fn main() {
-    traits_generics::run();
+
+struct GoodMorning;
+
+impl Greet for GoodMorning{
+    fn say_hello(&self) {
+        println!("good morning ji");
+    }
+}
+
+
+fn main(){
+   let goodmorning = GoodMorning;
+   goodmorning.say_hello();
 }
