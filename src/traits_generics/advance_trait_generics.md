@@ -1,14 +1,14 @@
 # Advanced Traits & Generics
 # Base example used everywhere below:
-#
-# trait Greet {
-#     fn say_hello(&self) { println!("hello"); }
-# }
-# struct GoodMorning;
-# impl Greet for GoodMorning {
-#     fn say_hello(&self) { println!("good morning ji"); }
-# }
-
+ ```rust
+ trait Greet {
+     fn say_hello(&self) { println!("hello"); }
+ }
+ struct GoodMorning;
+ impl Greet for GoodMorning {
+     fn say_hello(&self) { println!("good morning ji"); }
+ }
+```
 ---------------------------------------------------------------------------------------------------------
 
 ## 1. Supertraits
