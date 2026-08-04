@@ -1,6 +1,6 @@
 # Traits & Generics — Complete Theory Guide
 
-> Code reference: `src/traits_generics/mod.rs`
+> Code reference: [traits_generic/mod.rs](https://github.com/mishaldotrs/rust_prac/blob/main/src/traits_generics/mod.rs)
 
 ---
 
