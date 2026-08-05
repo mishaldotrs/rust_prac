@@ -1,6 +1,8 @@
 mod errors;
 
 fn main() {
-    // --- panic on condition ---
-    errors::panic_on_condition(5); // ok
+    match errors::divide(10.0, 3.3) {
+        Ok(val) => println!("result: {}", val),
+        Err(e) => println!("error: {}", e),
+    }
 }
