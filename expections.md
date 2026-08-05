@@ -149,3 +149,55 @@ fn main(){
          → if a type implements one trait, it automatically gets another
          → std library: impl<T: Display> ToString for T — that's why 42.to_string() works
          → syntax:  impl<T: Display> PrintMe for T { ... }
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---> Learning Roadmap (Axum / Tokio Backend)
+
+  1. Traits & Generics        ✅ done
+         → contract, impl, default, generic <T>, bounds, impl Trait, dyn Trait, associated types, blanket impl
+
+  2. Iterators & Closures
+         → Iterator trait, .map() .filter() .collect()
+         → closures — |x| x + 1
+         → lazy evaluation
+         → used everywhere in real code
+
+  3. Error Handling
+         → Result<T, E> and Option<T>
+         → ? operator
+         → custom error types
+         → thiserror / anyhow crates (used in Axum apps)
+
+  4. Lifetimes
+         → 'a syntax
+         → why references need lifetimes
+         → lifetime elision rules
+
+  5. Smart Pointers
+         → Box<T>     — heap allocation
+         → Rc<T>      — multiple owners (single thread)
+         → Arc<T>     — multiple owners (multi thread)
+         → RefCell<T> — interior mutability (single thread)
+         → Mutex<T>   — interior mutability (multi thread)
+         → Pin<T>     — prevent moving in memory
+
+  6. Concurrency
+         → threads — std::thread::spawn
+         → Send + Sync marker traits
+         → Arc + Mutex pattern
+         → channels — mpsc
+
+  7. Async / Await
+         → Future trait
+         → async fn, .await
+         → Pin + Unpin
+         → tokio runtime
+
+  8. Axum + Tokio (Backend)
+         → Router, handlers
+         → extractors — Json, Path, Query, State
+         → middleware — tower::Service
+         → error handling in Axum
+         → database — sqlx

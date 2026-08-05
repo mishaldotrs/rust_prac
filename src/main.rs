@@ -1,20 +1,6 @@
-trait Greet {
-    fn say_hello(&self){
-        println!("hello");
-    }
-}
+mod errors;
 
-
-struct GoodMorning;
-
-impl Greet for GoodMorning{
-    fn say_hello(&self) {
-        println!("good morning ji");
-    }
-}
-
-
-fn main(){
-   let goodmorning = GoodMorning;
-   goodmorning.say_hello();
+fn main() {
+    // --- panic on condition ---
+    errors::panic_on_condition(5); // ok
 }
