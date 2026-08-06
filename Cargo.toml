@@ -9,4 +9,8 @@ edition = "2021"
 name = "rust_prac"
 path = "src/main.rs"
 
+[dependencies]
+thiserror = "2"
+anyhow = "1"
+
 
