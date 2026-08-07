@@ -1,19 +1,24 @@
+#![allow(dead_code)]
+
+#[path = "ownership_borrowing/mod.rs"]
+mod ownership_borrowing;
+
+#[path = "traits_generics/mod.rs"]
+mod traits_generics;
+
+#[path = "errors/mod.rs"]
+mod errors;
+
 #[path = "enums-pattern_matching/mod.rs"]
 mod enums_pattern_matching;
-mod errors;
-fn main(){
-    println!("\n===== ENUMS 1. IF LET =====");
-    enums_pattern_matching::demo_if_let();
 
-    println!("\n===== ENUMS 2. DESTRUCTURING =====");
-    enums_pattern_matching::demo_destructuring();
+#[path = "iterators_clousers/mod.rs"]
+mod iterators_clousers;
 
-    println!("\n===== ENUMS 3. STATE MACHINE =====");
-    enums_pattern_matching::demo_state_machine();
-
-    println!("\n===== ENUMS 4. RESULT HANDLING =====");
-    enums_pattern_matching::demo_result_handling();
-
-    println!("\n===== ENUMS 5. API DESIGN =====");
-    enums_pattern_matching::demo_api_design();
+fn main() {
+    ownership_borrowing::run_mod::run();
+    traits_generics::run_mod::run();
+    errors::run_mod::run();
+    enums_pattern_matching::run_mod::run();
+    iterators_clousers::run_mod::run();
 }

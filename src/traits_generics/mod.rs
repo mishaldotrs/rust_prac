@@ -1,3 +1,7 @@
+#![allow(dead_code)]
+
+pub mod run_mod;
+
 // ============================================================
 // STEP 1 — TRAITS (contract kya hota hai)
 // ============================================================
@@ -232,10 +236,10 @@ impl<T: std::fmt::Display> PrintMe for T {
 }
 
 // ============================================================
-// MAIN — sab concepts ek saath chalao
+// (run() moved to run_mod.rs)
 // ============================================================
 
-pub fn run() {
+fn _unused() {
     println!("\n===== STEP 1 & 2 — TRAITS & IMPL =====");
     let d = Dog;
     let c = Cat;
