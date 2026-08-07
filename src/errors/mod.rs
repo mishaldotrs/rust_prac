@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 use std::fmt;
 use std::num::ParseIntError;
 
@@ -5,6 +6,7 @@ use std::num::ParseIntError;
 // 1. PANIC — unrecoverable error
 // =====================================================================
 
+#[allow(dead_code)]
 pub fn get_element(v: &Vec<i32>, index: usize) -> i32 {
     if index >= v.len() {
         panic!("index out of bounds — this is a bug, not a user error");
@@ -16,6 +18,7 @@ pub fn get_element(v: &Vec<i32>, index: usize) -> i32 {
 // 2. OPTION<T> — value may or may not exist
 // =====================================================================
 
+#[allow(dead_code)]
 pub fn is_sqrt(x: f64) -> Option<f64> {
     if x >= 0.0 {
         Some(x.sqrt())
@@ -28,6 +31,7 @@ pub fn is_sqrt(x: f64) -> Option<f64> {
 // 3. RESULT<T, E> — success or recoverable failure
 // =====================================================================
 
+#[allow(dead_code)]
 pub fn divide(a: f64, b: f64) -> Result<f64, String> {
     if b == 0.0 {
         Err(String::from("denominator cannot be zero"))
@@ -40,6 +44,7 @@ pub fn divide(a: f64, b: f64) -> Result<f64, String> {
 // 4. UNWRAP — extract value or panic
 // =====================================================================
 
+#[allow(dead_code)]
 pub fn demo_unwrap() {
     let good: Result<i32, String> = Ok(10);
     let val = good.unwrap();
